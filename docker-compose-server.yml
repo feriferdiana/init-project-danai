@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  APPNAME-app:
+    image: IMAGETAG
+    ports:
+      - PORTNUM:PORTNUM2
+    networks:
+      - danai-net
+    restart: always
+networks:
+  danai-net:
+    external: true
+  
