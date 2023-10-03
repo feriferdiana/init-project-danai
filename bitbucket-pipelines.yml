@@ -6,13 +6,17 @@ pipelines:
     - step:
         name: Build & Push Image
         script:
-          - export APP_NAME=hrus-danai
-          - export APP_PORT=19001
+          - export APP_NAME=init-project-danai
+          - export APP_PORT=8080
           - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
           - export BITBUCKET_COMMIT_SHORT="${BITBUCKET_COMMIT::7}"
           - if [[ $BITBUCKET_BRANCH == "master" ]]; then
-            export ENV_NAME=prod && export IMAGE_TAG=danaiid/hrus-danai-prod:latest;
-            elif [[ $BITBUCKET_BRANCH == "uat" ]]; then
+            export ENV_NAME=prod && export IMAGE_TAG=danaiid/init-project-danai-prod:latest;
+            docker build -t danaiid/init-project-danai-prod:latest -f cicd/docker/build.Dockerfile . --build-arg CONFIG_ENV=proddrc --build-arg APP_PORT=$APP_PORT;
+            docker push danaiid/init-project-danai-prod-drc:latest;
+            elif [[ $BITBUCKET_BRANCH == "devel" ]]; then 
+            export ENV_NAME=devel && export IMAGE_TAG=danaiid/$APP_NAME:$APP_NAME.devel.$BITBUCKET_COMMIT_SHORT;
+            elif [[ $BITBUCKET_BRANCH == "uat" ]]; then 
             export ENV_NAME=uat && export IMAGE_TAG=danaiid/$APP_NAME:$APP_NAME.uat.$BITBUCKET_COMMIT_SHORT;
             else echo "not build for target environtment" || exit 1; fi
           - docker build -t $IMAGE_TAG -f cicd/docker/build.Dockerfile . --build-arg CONFIG_ENV=$ENV_NAME --build-arg APP_PORT=$APP_PORT
@@ -22,10 +26,12 @@ pipelines:
         name: Deploy Application
         script:
           - if [[ $BITBUCKET_BRANCH == "uat" ]]; then
-            export ENV_NAME=uat && export SSH_USER=adiwisista && export SSH_IP=iniuat.hrus.online && export SSH_KEY=cicd/ssh/keyuat;
+            export ENV_NAME=uat && export SSH_USER=adiwisista && export SSH_IP=uatdanai.hrus.online && export SSH_KEY=cicd/ssh/keyuat;
+            elif [[ $BITBUCKET_BRANCH == "devel" ]]; then
+            export ENV_NAME=devel && export SSH_USER=adiwisista && export SSH_IP=147.139.135.218 && export SSH_KEY=cicd/ssh/keydevel;
             else echo "not build for target environtment" || exit 1; fi
-          - export APP_NAME=hrus-danai
-          - export APP_PORT=19001
+          - export APP_NAME=init-project-danai
+          - export APP_PORT=8080
           - apt-get update -y
           - apt-get install -y openssh-client
           - export BITBUCKET_COMMIT_SHORT="${BITBUCKET_COMMIT::7}"

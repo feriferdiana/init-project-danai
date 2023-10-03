@@ -7,6 +7,12 @@ services:
     networks:
       - danai-net
     restart: always
+    volumes:
+      - danai-vol:/danaiid/peruri/logs
+      - danai-vol:/danaiid/peruri/sharefolder
+volumes:
+  danai-vol:
+    external: true
 networks:
   danai-net:
     external: true
