@@ -1,0 +1,86 @@
+html, head, body{
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    background-color: white;
+    text-align: justify;
+}
+
+header{
+    width: 100%;
+    padding: 2% 0%;
+    text-align: center;
+}
+
+.logo{
+    width: 100%;
+}
+
+.container{
+    font-family: sans-serif;
+}
+
+.regulation{
+    padding: 1em 0;
+}
+
+.title-regulation{
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+.title-regulation span {
+    background:#fff;
+    padding:0 10px;
+}
+
+li{
+    padding: 10px 0px;
+}
+
+.footer{
+    width: 100%;
+    text-align: justify;
+}
+
+.borrower-sign{
+    width: 40%;
+    float: left;
+}
+
+.space{
+    width: 19%;
+    float: left;
+}
+
+.lender-sign{
+    width: 40%;
+    float: left;
+}
+
+.border{
+    padding: 15em 0em 1em;
+    border-bottom: black 1px solid;
+}
+
+.tag-letter{
+    text-align: left;
+}
+
+.top{
+    vertical-align: top;
+}
+
+table{
+    width: max-content;
+}
+
+@page {
+    padding: 1.23cm 0.75cm 0.6cm;
+    size: letter;
+}

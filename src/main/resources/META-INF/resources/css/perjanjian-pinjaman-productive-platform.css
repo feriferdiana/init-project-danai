@@ -1,0 +1,363 @@
+html, head, body{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+html{
+    background-color: white;
+}
+
+header{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+header p{
+    margin-top: -0.7em;
+}
+
+.logo{
+    width: 23%;
+    z-index: 3;
+}
+
+@page {
+    padding: 0.7cm 0.25cm 0.6cm 1.2cm;
+    size: Letter;
+
+    @top-left {
+        content: element(pageHeader);
+        padding-top: 12px;
+        z-index: 3;
+    }
+
+    @bottom-right{
+        content: "Halaman " counter(page) " dari " counter(pages);
+    }
+}
+
+@page :first {
+    padding-bottom: 4.5cm;
+    margin-top: 1cm;
+}
+
+#pageHeader{
+    position: running(pageHeader);
+    z-index: 3;
+}
+
+.container{
+    font-family: sans-serif;
+}
+
+.body-letter{
+    z-index: -1 !important;
+}
+
+.installment{
+    page-break-inside: auto;
+    font-weight: bold;
+}
+
+.title-regulation{
+    font-weight: bold;
+}
+
+.table-regulation{
+    width: inherit;
+    margin: 0.2cm 0 0.3cm;
+    vertical-align: middle;
+    page-break-inside: auto;
+}
+
+.title-table{
+    background-color:#33ACE0 ;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tgl-angsuran{
+    text-align: center;
+}
+
+tr.tr-bottom td, th{
+    border: white 1px solid;
+    border-top: black 1px solid;
+    margin: 0.3cm 0;
+}
+
+tr.tr-bottom{
+    border: white 1px solid;
+    border-top: black 1px solid;
+    margin: 0.3cm 0;
+}
+
+ol li{
+    padding: 2px 0 3px;
+}
+
+ul li{
+    padding: 2px 0;
+}
+
+ol{
+    padding: 2px 0 0;
+}
+
+ul.head-loan{
+    list-style-type: none;
+}
+
+ul.head-loan li:before {
+    content: '\2013';
+    padding-right: 0.4em;
+}
+
+ul.head-loan li p{
+    margin: -1.25em 0 0 2em;
+}
+
+.regulation{
+    padding: 5px 0;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+ul.definisi{
+    list-style-type: lower-latin;
+}
+
+ul.definisi li:before{
+    list-style-type: lower-latin;
+    content: none;
+    padding-right: 0.5em;
+}
+
+ul.definisi li p{
+    margin: -1.25em 0 0 2em;
+}
+
+ul.definisi.syarat li p {
+    margin: -1.25em 0px 0px 0.2em;
+}
+
+ul.definisi.syarat li {
+    padding: 0.5em 0;
+}
+
+.content-regulation{
+    font-weight: normal;
+}
+
+.table-regulation{
+    font-weight: normal;
+    border: black 1px solid;
+    width: 100%;
+    border-collapse: collapse;
+    vertical-align: middle;
+}
+
+.table-regulation td, th {
+    border: 1px solid #000000;
+    text-align: center;
+    padding: 5px;
+    width: fit-content;
+}
+
+.table-blank{
+    width: 50%;
+}
+
+.installment-info ul{
+    margin-left: -1em;
+}
+
+.installment-info ul table{
+    margin-bottom: -0.5em;
+}
+
+ol {
+    list-style-type: none;
+    counter-reset: item;
+    margin: 0;
+    padding: 0;
+}
+
+ol > li {
+    display: table;
+    counter-increment: item;
+    margin-bottom: 0.3em;
+    page-break-inside: avoid;
+}
+
+ol > li:before {
+    content: counters(item, ".") ". ";
+    display: table-cell;
+    padding-right: 0.2em;
+}
+
+li ol > li {
+    margin: 0.8em;
+}
+
+li ol > li:before {
+    content: counters(item, ".") " ";
+    padding-right: 2em;
+    margin-left: 0.8em;
+}
+
+li ol > li p{
+    margin: -1.25em 0 0 3em;
+}
+
+
+li ol li ol > li{
+    padding-left: 2em;
+}
+
+li ol li ol > li p{
+    margin-left: 4em;
+}
+
+li ol li ol > li:before {
+    content: counters(item, ".") " ";
+}
+
+ol li ol li ul > li p{
+    padding: 6px 0;
+    margin: -1.25em 0 0 3.5em;
+}
+
+ol li ol li ul.definisi > li:before{
+    padding-right: 0.3em;
+    margin-left: 5em;
+}
+
+ol li ol li ul.head-loan > li:before{
+    padding-right: 0.3em;
+    margin-left: 1em;
+}
+
+ol li ol li ul.head-loan > li p{
+    margin-top: -1.5em;
+}
+
+ol li ul > li p{
+    margin: -1.25em 0 0 2em;
+}
+
+ol li ul > li:before{
+    margin-left: 2em;
+}
+
+ol li ul li ul > li:before{
+    margin-left: 2em;
+}
+
+ol li ul li ul > li p{
+    margin: -1.25em 0 0 3em;
+}
+
+ol li ol li ul.definisi > li{
+    margin-left: 0.7em;
+}
+
+ol li ol li ul.definisi.informasi > li{
+    margin-left: 2em;
+}
+
+ol li ol li ul.definisi > li p{
+    padding-left: 0.5em;
+}
+
+ol li ol li ul.definisi.syarat > li{
+    margin-left: 5.5em;
+    padding-left: 0;
+}
+
+ol li ol li ol li ul > li:before{
+    margin-left: 2em;
+}
+
+ol li ol li ol li ul > li p{
+    margin-left: 2em;
+}
+
+ol li ol li ol li ul.head-loan > li p{
+    margin-top: -1.6em;
+}
+
+ol li ol li ol li ul.definisi li{
+    margin-left: 20px;
+}
+
+ol li ol li ul li ul.definisi li{
+    margin-left: 0;
+}
+
+ol li ol li ul li ul.definisi li p{
+    margin-left: 5em;
+}
+
+ul.definisi.other > li{
+    padding: 1.4em 0 0.3em -2em;
+}
+
+ol.negligence li {
+    padding: 0 0 0.47em;
+}
+
+ol.content-regulation.negligence-desc > li p{
+    padding: 0 0 0.3em;
+}
+
+ol > li.signature-content{
+    page-break-inside: auto;
+}
+
+.signature-content ul > li{
+    list-style-type: none;
+}
+
+.signature-content ul{
+    margin-left: -5em;
+}
+
+.borrower-sign{
+    width: 50%;
+}
+
+.space-content{
+    margin: 10em 0em;
+}
+
+.space{
+    margin: 13em 0em;
+}
+
+.lender-sign{
+    width: 50%;
+}
+
+.border{
+    padding: 15em 0em 1em;
+    border-bottom: black 1px solid;
+}
+
+.tag-letter{
+    text-align: left;
+    padding: 2em 0em;
+}
+
+.tag-letter.title{
+    padding: 0;
+}
+
+.title-ttd{
+    padding-left: 0.84cm;
+    padding-bottom: 0.3cm;
+    margin-top: 0;
+}
